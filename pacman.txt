@@ -395,7 +395,6 @@ m4
 mailcap
 make
 man-db
-mbpfan
 mdadm
 mesa
 mkinitcpio
@@ -437,8 +436,6 @@ pambase
 pango
 pangomm-2.48
 parted
-paru
-paru-debug
 patch
 pavucontrol
 pciutils
