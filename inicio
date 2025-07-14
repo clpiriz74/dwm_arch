@@ -1,6 +1,6 @@
 #!/bin/bash
 
-feh --bg-scale /home/elpa/mac/wallpapers/manga-samurai.png &
+feh --bg-scale $HOME/wallpapers/manga-samurai.png &
 
 # Matar picom si está corriendo y arrancar uno nuevo
 pkill picom
