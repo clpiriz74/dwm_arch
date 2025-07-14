@@ -1,0 +1,55 @@
+Con **16 GB de RAM**, **16 GB de swap** en disco y **4 GB de zram**, estás bastante bien cubierto, pero elegir el valor correcto de `swappiness` depende de tus prioridades:
+
+---
+
+### 🧠 ¿Qué hace `swappiness` exactamente?
+
+* **Valores bajos (1–20):** el sistema **evita usar swap** lo más posible, útil para alto rendimiento.
+* **Valores medios (30–60):** equilibrio entre usar RAM y swap.
+* **Valores altos (60–100):** más propenso a mover procesos inactivos a swap para liberar RAM.
+
+---
+
+### 🎯 Recomendación para tu caso:
+
+* ✅ **Tienes bastante RAM (16 GB)**
+* ✅ **Tienes zram (memoria comprimida en RAM)**
+* ✅ **Tienes swap en disco también (más lento)**
+
+📌 **Recomendación óptima:**
+
+```conf
+vm.swappiness=20
+```
+
+Esto:
+
+* Favorece el uso de RAM.
+* Usa zram cuando haya presión de memoria (rápido y eficiente).
+* Solo usará el swap en disco cuando realmente sea necesario.
+
+---
+
+### ✅ ¿Dónde configurar?
+
+Archivo:
+
+```bash
+sudo nano /etc/sysctl.d/99-swappiness.conf
+```
+
+Contenido:
+
+```conf
+vm.swappiness=20
+```
+
+Aplica los cambios sin reiniciar:
+
+```bash
+sudo sysctl --system
+```
+
+---
+
+Si quieres aún más control (como usar zram primero y *nunca* swap en disco si no es necesario), se puede ajustar también `vm.page-cluster` y priorizar el zram en `/etc/fstab` o en la creación del dispositivo zram. ¿Querés afinar aún más eso también?
