@@ -5,6 +5,9 @@
 alias ls='lsd'
 alias cat='bat'
 alias grep='grep --color=auto'
+alias xi='sudo xbps-install -Su'
+alias xq='xbps-query -Rs'
+
 
 if [[ $EUID -eq 0 ]]; then
     # Prompt para root (rojo)
